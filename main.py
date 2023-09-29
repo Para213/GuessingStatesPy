@@ -16,7 +16,6 @@ turtle.shape(image)
 corecte = 0
 frame = pd.read_csv("50_states.csv")
 all_states = frame.state.to_list()
-state_ramase = []
 guessed = []
 
 while corecte != 50:
@@ -31,8 +30,12 @@ while corecte != 50:
     elif answer_state == "Exit":
         break
 
-for state in all_states:
-    if state not in guessed:
-        state_ramase.append(state)
-new_data = pd.DataFrame(state_ramase)
+# for state in all_states:
+#     if state not in guessed:
+#         state_ramase.append(state)
+# new_data = pd.DataFrame(state_ramase)
+# new_data.to_csv("gresite.csv")
+
+new_data = [state for state in all_states if state not in guessed]
+new_data = pd.DataFrame(new_data)
 new_data.to_csv("gresite.csv")
